@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body>
+
+<h1>Buy products</h1>
+<form th:method="POST" th:action="@{/buyproducts}">
+    <div class="form-group">
+        <label>Choose products</label>
+
+        <div class="checkbox" name="product" th:each="product : ${products}">
+            <label><span th:text="${product.productName}"></span>
+                <span th:text="${product.productPrice}"></span>
+                <span th:text="${product.unitsOnStock}"></span>
+                <input style="margin-left: 0px;" type="checkbox" class="form-control"
+                       th:value="${product.productID}"
+                       th:checked="${#sets.contains(products,product.productID)}" name="ids"/></label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="customer_first_name">First Name</label>
+        <input type="text" class="form-control" name="first" id="customer_first_name"/>
+    </div>
+    <div class="form-group">
+        <label for="customer_last_name">Last Name</label>
+        <input type="text" class="form-control" name="last" id="customer_last_name"/>
+    </div>
+    <div class="form-group">
+        <label for="customer_street">Street</label>
+        <input type="text" class="form-control" name="street" id="customer_street"/>
+    </div>
+    <div class="form-group">
+        <label for="customer_zipcode">ZipCode</label>
+        <input type="text" class="form-control" name="zipcode" id="customer_zipcode"/>
+    </div>
+    <div class="form-group">
+        <label for="customer_city">City</label>
+        <input type="text" class="form-control" name="city" id="customer_city"/>
+    </div>
+    <button type="submit">Buy</button>
+</form>
+
+<br/>
+</body>
+</html>

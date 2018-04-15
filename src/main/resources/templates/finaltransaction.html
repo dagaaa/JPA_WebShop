@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    <title>trn</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body>
+
+<h1>Products</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productName}"></td>
+        <td th:text="${product.productPrice}"></td>
+        <td th:text="${product.category}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<br/>
+
+<h1>Customer</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="cu : ${c}">
+        <td th:text="${cu.firstName}"></td>
+        <td th:text="${cu.lastName}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<br/>
+
+<h1>Transction</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Your Transaction Number</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="tr : ${t}">
+        <td th:text="${tr.transactionNumber}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+<p>Transaction successful</p>
+
+
+</body>
+
+</html>

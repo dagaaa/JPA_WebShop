@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+    <title>Products</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+
+</head>
+<body>
+<h2>List of Products</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Units On Stock</th>
+        <th>Category</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.productName}"></td>
+        <td th:text="${product.productPrice}"></td>
+        <td th:text="${product.unitsOnStock}"></td>
+        <td th:text="${product.category}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<br/>
+<div>
+    <form th:method="POST" th:action="@{/choosecategory}">
+        <div class="form-group">
+            <label>category</label>
+            <input class="form-control" name="category"/>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
